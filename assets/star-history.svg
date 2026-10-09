@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="960" height="560" viewBox="0 0 960 560" role="img" aria-labelledby="title description">
-  <title id="title">ai-vp/dive-into-embodied-ai Star History</title>
-  <desc id="description">Cumulative GitHub stars for ai-vp/dive-into-embodied-ai: 0</desc>
+  <title id="title">aivst/dive-into-embodied-ai Star History</title>
+  <desc id="description">Cumulative GitHub stars for aivst/dive-into-embodied-ai: 0</desc>
   <defs>
     <linearGradient id="area" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%" stop-color="#58a6ff" stop-opacity="0.42" />
@@ -14,16 +14,16 @@
   </defs>
   <rect width="960" height="560" rx="18" fill="#0d1117" />
   <rect x="0.5" y="0.5" width="959" height="559" rx="17.5" fill="none" stroke="#30363d" />
-  <text x="48" y="50" fill="#f0f6fc" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="25" font-weight="700">ai-vp/dive-into-embodied-ai Star History</text>
+  <text x="48" y="50" fill="#f0f6fc" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="25" font-weight="700">aivst/dive-into-embodied-ai Star History</text>
   <text x="48" y="79" fill="#8b949e" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="15">0 stars · updated through waiting for the first star</text>
   <line x1="88" y1="456.00" x2="920" y2="456.00" stroke="#21262d" stroke-width="1" />
   <text x="74" y="461.00" text-anchor="end" fill="#8b949e" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13">0</text>
   <line x1="88" y1="112.00" x2="920" y2="112.00" stroke="#21262d" stroke-width="1" />
   <text x="74" y="117.00" text-anchor="end" fill="#8b949e" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13">1</text>
   <line x1="88.00" y1="112" x2="88.00" y2="456" stroke="#21262d" stroke-width="1" stroke-dasharray="3 5" />
-  <text x="88.00" y="485" text-anchor="start" fill="#8b949e" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13">2026-10-07</text>
+  <text x="88.00" y="485" text-anchor="start" fill="#8b949e" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13">2026-10-08</text>
   <line x1="920.00" y1="112" x2="920.00" y2="456" stroke="#21262d" stroke-width="1" stroke-dasharray="3 5" />
-  <text x="920.00" y="485" text-anchor="end" fill="#8b949e" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13">2026-10-08</text>
+  <text x="920.00" y="485" text-anchor="end" fill="#8b949e" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13">2026-10-09</text>
   <path d="M 88.00 456 L 88.00 456.00 L 920.00 456.00 L 920.00 456 Z" fill="url(#area)" />
   <path d="M 88.00 456.00 L 920.00 456.00" fill="none" stroke="#58a6ff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
   <circle cx="920.00" cy="456.00" r="6" fill="#58a6ff" filter="url(#glow)" />
