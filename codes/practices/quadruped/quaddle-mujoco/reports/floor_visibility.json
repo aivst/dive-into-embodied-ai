@@ -1,0 +1,38 @@
+{
+  "passed": true,
+  "plane_size": [
+    0.0,
+    0.0,
+    0.1
+  ],
+  "samples": [
+    {
+      "kind": "actual_walk",
+      "time_s": 59.999999999950866,
+      "forward_m": 4.413707844007914,
+      "black_floor_fraction": 0.0,
+      "image": "floor-60s.webp"
+    },
+    {
+      "kind": "actual_walk",
+      "time_s": 122.00000000021848,
+      "forward_m": 9.197967585900598,
+      "black_floor_fraction": 0.0,
+      "image": "floor-122s.webp"
+    },
+    {
+      "kind": "render_only_translation",
+      "offset_m": [
+        1000,
+        -1000
+      ],
+      "black_floor_fraction": 0.0,
+      "image": "floor-1000m-render-check.webp",
+      "camera_initialized_before_scene": true
+    }
+  ],
+  "body_contacts": 0,
+  "min_upright": 0.964240025308716,
+  "model_sha256": "10d1990f12c2dc79b739b67203422ff8a0090a01e424dacf780b9a03d6015b83",
+  "gait_sha256": "b3ea869dd619ef3fd39fe7c9d67c06fc2f9c91f5aaab7083e12a14af73f5516a"
+}

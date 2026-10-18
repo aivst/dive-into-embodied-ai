@@ -1,0 +1,8 @@
+{
+  "engine": "MuJoCo WASM 3.16.0",
+  "passed": true,
+  "walkSeconds": 60,
+  "forwardMeters": 4.4140286959464765,
+  "minUpright": 0.966917151648336,
+  "stopSpeed": 0.000019524838098454658
+}

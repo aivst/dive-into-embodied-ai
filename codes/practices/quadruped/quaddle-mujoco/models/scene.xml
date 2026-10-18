@@ -1,0 +1,253 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mujoco model="Quaddle - local approximate adaptation">
+  <compiler angle="radian" meshdir="assets" autolimits="true" />
+  <option timestep="0.001" integrator="implicitfast" iterations="80" tolerance="1e-10" />
+  <visual>
+    <global offwidth="1280" offheight="960" />
+    <headlight ambient="0.35 0.35 0.35" diffuse="0.6 0.6 0.6" />
+    <map znear="0.005" />
+  </visual>
+  <default>
+    <geom solref="0.008 1" solimp="0.95 0.99 0.001" />
+  </default>
+  <asset>
+    <mesh name="batterie_model_bl_5c" file="batterie_model_bl_5c.stl" />
+    <mesh name="battery_cap_thin" file="battery_cap_thin.stl" />
+    <mesh name="bearing" file="bearing.stl" />
+    <mesh name="body" file="body.stl" />
+    <mesh name="body_bar" file="body_bar.stl" />
+    <mesh name="gear" file="gear.stl" />
+    <mesh name="leg" file="leg.stl" />
+    <mesh name="leg_right" file="leg_right.stl" />
+    <mesh name="lego_top_cap" file="lego_top_cap.stl" />
+    <mesh name="long_spring" file="long_spring.stl" />
+    <mesh name="long_spring_right" file="long_spring_right.stl" />
+    <mesh name="lower4wheel" file="lower4wheel.stl" />
+    <mesh name="motor_arm" file="motor_arm.stl" />
+    <mesh name="power_cap" file="power_cap.stl" />
+    <mesh name="screw_servo" file="screw_servo.stl" />
+    <mesh name="thigh" file="thigh.stl" />
+    <mesh name="thigh_right" file="thigh_right.stl" />
+    <mesh name="tip" file="tip.stl" />
+    <mesh name="tip_wheel" file="tip_wheel.stl" />
+    <texture name="grid" type="2d" builtin="checker" rgb1="0.12 0.16 0.22" rgb2="0.18 0.23 0.30" width="512" height="512" />
+    <material name="floor" texture="grid" texuniform="true" texrepeat="16 16" reflectance="0.12" />
+  </asset>
+  <worldbody>
+    <light pos="0 -0.4 0.8" dir="0 0.4 -0.8" directional="true" />
+    <geom name="ground" type="plane" size="0 0 0.1" material="floor" contype="1" conaffinity="2" friction="0.8 0.002 0.0001" />
+    <body name="body" pos="0 0 0.065" quat="1 0 0 0">
+      <freejoint name="root" />
+      <inertial mass="0.161638" pos="-0.00527469 -0.00665217 -0.00016366" fullinertia="0.000138691 4.1084e-05 0.000164163 4.1927e-08 -9.874e-09 -3.77189e-06" />
+      <geom name="body_visual_0" type="mesh" mesh="lego_top_cap" rgba="0.419608 0.419608 0.419608 1" contype="0" conaffinity="0" group="2" mass="0" pos="-0.00526647 -0.000744244 -0.00249846" quat="1 0 0 0" />
+      <geom name="body_visual_1" type="mesh" mesh="power_cap" rgba="0.419608 0.419608 0.419608 1" contype="0" conaffinity="0" group="2" mass="0" pos="-0.00526647 -0.000744244 -0.00247543" quat="1 0 0 0" />
+      <geom name="body_visual_2" type="mesh" mesh="batterie_model_bl_5c" rgba="0.627451 0.627451 0.627451 1" contype="0" conaffinity="0" group="2" mass="0" pos="0.0237376 -0.0405934 0.0108496" quat="0.4999981634 -0.5 0.5000018366 -0.5" />
+      <geom name="body_visual_3" type="mesh" mesh="body_bar" rgba="0.627451 0.627451 0.627451 1" contype="0" conaffinity="0" group="2" mass="0" pos="-0.00526646 0.0636993 -0.00249846" quat="1 0 0 0" />
+      <geom name="body_visual_4" type="mesh" mesh="gear" rgba="0.905882 0.905882 0.886275 1" contype="0" conaffinity="0" group="2" mass="0" pos="-0.0378665 -0.0392007 0.00390154" quat="-0.4999981634 0.5 0.5000018366 -0.5" />
+      <geom name="body_visual_5" type="mesh" mesh="body" rgba="0.909804 0.678431 0.137255 1" contype="0" conaffinity="0" group="2" mass="0" pos="-0.00526647 -0.000744244 -0.00249846" quat="1 0 0 0" />
+      <geom name="body_visual_6" type="mesh" mesh="gear" rgba="0.905882 0.905882 0.886275 1" contype="0" conaffinity="0" group="2" mass="0" pos="-0.0378665 0.0252993 0.00390154" quat="-0.4999981634 0.5 0.5000018366 -0.5" />
+      <geom name="body_visual_7" type="mesh" mesh="gear" rgba="0.905882 0.905882 0.886275 1" contype="0" conaffinity="0" group="2" mass="0" pos="0.0273335 0.0252993 0.00390154" quat="0.4999981634 0.5 0.5000018366 0.5" />
+      <geom name="body_visual_8" type="mesh" mesh="body_bar" rgba="0.627451 0.627451 0.627451 1" contype="0" conaffinity="0" group="2" mass="0" pos="-0.00526646 -0.000800725 -0.00249846" quat="1 0 0 0" />
+      <geom name="body_visual_9" type="mesh" mesh="gear" rgba="0.905882 0.905882 0.886275 1" contype="0" conaffinity="0" group="2" mass="0" pos="0.0273335 -0.0392007 0.00390154" quat="0.4999981634 0.5 0.5000018366 0.5" />
+      <geom name="body_visual_10" type="mesh" mesh="battery_cap_thin" rgba="0.462745 0.627451 0.980392 1" contype="0" conaffinity="0" group="2" mass="0" pos="-0.00526647 -0.000744244 -0.00247543" quat="1 0 0 0" />
+      <body name="body_collision" pos="-0.00526647 -0.000744244 0.0125015" quat="1 0 0 0" />
+      <body name="left_front_thigh" pos="0.0239335 -0.0392007 0.00390154" quat="-0.4999981634 0.5 0.5000018366 -0.5">
+        <joint name="left_front_thigh" type="hinge" axis="0 0 1" damping="0.0005" armature="0.000002" range="-1.4 1.4" />
+        <inertial mass="0.0026692" pos="0.000643255 0.0150873 -0.00185171" fullinertia="3.79523e-07 4.8206e-08 4.13338e-07 3.854e-09 -9.49e-10 3.316e-09" />
+        <geom name="left_front_thigh_visual_0" type="mesh" mesh="thigh" rgba="0.909804 0.678431 0.137255 1" contype="0" conaffinity="0" group="2" mass="0" pos="0 0 -0.0034" quat="-1.326794897e-06 1 0 0" />
+        <geom name="left_front_thigh_visual_1" type="mesh" mesh="bearing" rgba="0.627451 0.627451 0.627451 1" contype="0" conaffinity="0" group="2" mass="0" pos="0 0 -0.0033" quat="1.326794897e-06 1 0 0" />
+        <body name="closing_left_front_leg_2" pos="0 0.03 -0.0029" quat="-1.326794897e-06 1 0 0">
+          <site name="closing_left_front_leg_2_anchor" pos="-1.161176919e-08 4.332430389e-09 0.0009450398038" size="0.001" rgba="1 0.2 0.2 1" group="4" />
+        </body>
+        <geom name="left_front_thigh_contact" type="capsule" fromto="0 0 0 0 0.03 -0.0029" size="0.003" contype="2" conaffinity="1" group="3" rgba="0.2 0.9 0.5 0.3" mass="0" />
+      </body>
+      <body name="left_front_motor_arm" pos="0.0275335 -0.0392007 0.00390154" quat="-0.4999981634 0.5 0.5000018366 -0.5">
+        <joint name="left_front_motor_arm" type="hinge" axis="0 0 1" damping="0.0004" armature="0.00000002" stiffness="0.012" springref="0" />
+        <inertial mass="0.000598556" pos="0.00277955 1.39931e-05 -0.000412926" fullinertia="4.383e-09 1.5672e-08 1.6958e-08 2.3e-11 4.59e-10 -1.1e-11" />
+        <geom name="left_front_motor_arm_visual_0" type="mesh" mesh="motor_arm" rgba="0.988235 0.988235 0.941176 1" contype="0" conaffinity="0" group="2" mass="0" pos="0 0 0.0002" quat="1.326794897e-06 1 0 0" />
+        <geom name="left_front_motor_arm_visual_1" type="mesh" mesh="screw_servo" rgba="1 0.364706 0.364706 1" contype="0" conaffinity="0" group="2" mass="0" pos="0.000110692 4.58291e-05 -0.00155" quat="-1.326794897e-06 0 0 1" />
+        <body name="left_front_spring" pos="0.012 0 0.0014" quat="1.326794897e-06 1 0 0">
+          <joint name="left_front_spring" type="hinge" axis="0 0 1" damping="0.00002" armature="0.00000002" />
+          <inertial mass="0.00115717" pos="-0.000512017 -0.0161518 -0.000633026" fullinertia="8.6534e-08 4.703e-09 8.6725e-08 -2.831e-09 -1.3e-11 -4.37e-10" />
+          <geom name="left_front_spring_visual_0" type="mesh" mesh="long_spring" rgba="0.627451 0.627451 0.627451 1" contype="0" conaffinity="0" group="2" mass="0" pos="-0.012 0 0.0014" quat="1 0 0 0" />
+          <body name="left_front_leg" pos="-0.00113431 -0.0319159 -0.00121" quat="1 0 0 0">
+            <joint name="left_front_leg" type="hinge" axis="0 0 1" damping="0.001" armature="0.00000002" stiffness="0.08" springref="0" />
+            <inertial mass="0.000994691" pos="-0.015706 -0.00583261 -0.00141061" fullinertia="6.7715e-08 7.147e-08 1.34417e-07 -5.6269e-08 -8.43e-10 -7.3e-10" />
+            <geom name="left_front_leg_visual_0" type="mesh" mesh="leg" rgba="0.172549 0.172549 0.168627 1" contype="0" conaffinity="0" group="2" mass="0" pos="-0.0108657 0.0319159 0.0024" quat="1 0 0 0" />
+            <geom name="left_front_leg_visual_1" type="mesh" mesh="tip" rgba="0.964706 0.964706 0.952941 1" contype="0" conaffinity="0" group="2" mass="0" pos="-0.0107247 0.0318646 0.0024" quat="1 0 0 -5e-12" />
+            <body name="closing_left_front_leg_1" pos="-0.0108657 0.00191591 0.0038" quat="1 0 0 0">
+              <site name="closing_left_front_leg_1_anchor" pos="1.161176918e-08 6.830655697e-10 -0.0009450398038" size="0.001" rgba="1 0.2 0.2 1" group="4" />
+            </body>
+            <body name="left_front_foot" pos="-0.0261547 -0.0195792 -0.00155" quat="1 0 0 -5e-12" />
+            <body name="left_front_knee" pos="0 0 0" quat="1 0 0 0" />
+            <body name="left_front_wheel" pos="-0.0245472 -0.0151626 -0.00155" quat="1.326794897e-06 1 0 0">
+              <joint name="left_front_wheel" type="hinge" axis="0 0 1" damping="0.00002" armature="0.00000002" />
+              <inertial mass="0.00023416" pos="-0.00274895 -0.00106876 1.1992e-08" fullinertia="2.96e-09 5.734e-09 6.027e-09 1.62e-09 0 -0" />
+              <geom name="left_front_wheel_visual_0" type="mesh" mesh="lower4wheel" rgba="0.65098 0.65098 0.65098 1" contype="0" conaffinity="0" group="2" mass="0" pos="0.0138219 -0.0472146 -0.00395" quat="1.326794897e-06 1 0 0" />
+              <body name="left_front_wheel_tip" pos="-0.00909195 0.00369246 0" quat="-9.381839456e-07 0.7071054825 0.7071080799 -9.381873918e-07">
+                <joint name="left_front_wheel_tip" type="hinge" axis="0 0 1" damping="0.00002" armature="0.00000002" />
+                <inertial mass="0.001" pos="-0 -0 -0" fullinertia="1.583e-09 1.583e-09 2.5e-09 -0 -0 0" />
+                <geom name="left_front_wheel_tip_visual_0" type="mesh" mesh="tip_wheel" rgba="0.952941 0.796078 0.486275 1" contype="0" conaffinity="0" group="2" mass="0" pos="0.0229139 0.0509071 0.00395" quat="1 0 0 0" />
+                <body name="left_front_wheel_tip_collision" pos="-0 0 0" quat="1 0 0 0" />
+                <geom name="left_front_wheel_tip_contact_0" type="mesh" mesh="tip_wheel" contype="2" conaffinity="1" group="3" rgba="0.2 0.9 0.5 0.3" mass="0" friction="0.8 0.001 0.0001" pos="0.0229139 0.0509071 0.00395" quat="1 0 0 0" />
+              </body>
+              <geom name="left_front_wheel_contact_0" type="mesh" mesh="lower4wheel" contype="2" conaffinity="1" group="3" rgba="0.2 0.9 0.5 0.3" mass="0" friction="0.8 0.001 0.0001" pos="0.0138219 -0.0472146 -0.00395" quat="1.326794897e-06 1 0 0" />
+            </body>
+            <geom name="left_front_leg_contact" type="mesh" mesh="leg" contype="2" conaffinity="1" group="3" rgba="0.2 0.9 0.5 0.3" mass="0" pos="-0.0108657 0.0319159 0.0024" quat="1 0 0 0" />
+          </body>
+        </body>
+      </body>
+      <body name="right_front_thigh" pos="-0.0344665 -0.0392007 0.00390154" quat="0.4999981634 0.5 0.5000018366 0.5">
+        <joint name="right_front_thigh" type="hinge" axis="0 0 1" damping="0.0005" armature="0.000002" range="-1.4 1.4" />
+        <inertial mass="0.00266922" pos="0.000643242 -0.0150871 -0.00185172" fullinertia="3.79534e-07 4.8206e-08 4.13348e-07 -3.856e-09 -9.49e-10 -3.315e-09" />
+        <geom name="right_front_thigh_visual_0" type="mesh" mesh="thigh_right" rgba="0.909804 0.678431 0.137255 1" contype="0" conaffinity="0" group="2" mass="0" pos="-0 -0 -0.0034" quat="-1.326794897e-06 1 0 0" />
+        <geom name="right_front_thigh_visual_1" type="mesh" mesh="bearing" rgba="0.627451 0.627451 0.627451 1" contype="0" conaffinity="0" group="2" mass="0" pos="0 -0.06 -0.0033" quat="-1.326794897e-06 1 0 0" />
+        <body name="closing_right_front_leg_2" pos="-0 -0.03 -0.0029" quat="-1.326794897e-06 1 0 0">
+          <site name="closing_right_front_leg_2_anchor" pos="1.611769183e-09 -4.358751667e-09 0.0009450372618" size="0.001" rgba="1 0.2 0.2 1" group="4" />
+        </body>
+        <geom name="right_front_thigh_contact" type="capsule" fromto="0 0 0 -0 -0.03 -0.0029" size="0.003" contype="2" conaffinity="1" group="3" rgba="0.2 0.9 0.5 0.3" mass="0" />
+      </body>
+      <body name="right_front_motor_arm" pos="-0.0380665 -0.0392007 0.00390154" quat="0.4999981634 0.5 0.5000018366 0.5">
+        <joint name="right_front_motor_arm" type="hinge" axis="0 0 1" damping="0.0004" armature="0.00000002" stiffness="0.012" springref="0" />
+        <inertial mass="0.000598556" pos="0.00277955 1.39931e-05 -0.000412926" fullinertia="4.383e-09 1.5672e-08 1.6958e-08 2.3e-11 4.59e-10 -1.1e-11" />
+        <geom name="right_front_motor_arm_visual_0" type="mesh" mesh="motor_arm" rgba="0.988235 0.988235 0.941176 1" contype="0" conaffinity="0" group="2" mass="0" pos="0 0 0.0002" quat="-1.326794897e-06 1 0 0" />
+        <geom name="right_front_motor_arm_visual_1" type="mesh" mesh="screw_servo" rgba="1 0.364706 0.364706 1" contype="0" conaffinity="0" group="2" mass="0" pos="0.000110692 4.58291e-05 -0.00155" quat="-1.326794897e-06 0 0 1" />
+        <body name="right_front_spring" pos="0.012 -0 0.0014" quat="-1.326794897e-06 1 0 0">
+          <joint name="right_front_spring" type="hinge" axis="0 0 1" damping="0.00002" armature="0.00000002" />
+          <inertial mass="0.00115717" pos="-0.000511981 0.0161518 -0.000633075" fullinertia="8.6534e-08 4.703e-09 8.6725e-08 2.831e-09 -1.3e-11 4.36e-10" />
+          <geom name="right_front_spring_visual_0" type="mesh" mesh="long_spring_right" rgba="0.627451 0.627451 0.627451 1" contype="0" conaffinity="0" group="2" mass="0" pos="-0.012 0 0.0014" quat="1 0 0 0" />
+          <body name="right_front_leg" pos="-0.00113431 0.0319159 -0.00121" quat="-1.326794897e-06 1 0 0">
+            <joint name="right_front_leg" type="hinge" axis="0 0 1" damping="0.001" armature="0.00000002" stiffness="0.08" springref="0" />
+            <inertial mass="0.000994691" pos="-0.0157059 -0.00583263 0.00141061" fullinertia="6.7716e-08 7.1468e-08 1.34416e-07 -5.6268e-08 8.43e-10 7.3e-10" />
+            <geom name="right_front_leg_visual_0" type="mesh" mesh="tip" rgba="0.964706 0.964706 0.952941 1" contype="0" conaffinity="0" group="2" mass="0" pos="-0.00490733 0.0297472 -0.0024" quat="4.537911747e-07 0.342020591 0.9396924578 1.246779158e-06" />
+            <geom name="right_front_leg_visual_1" type="mesh" mesh="leg_right" rgba="0.172549 0.172549 0.168627 1" contype="0" conaffinity="0" group="2" mass="0" pos="-0.0108657 0.0319159 -0.0024" quat="1.326794897e-06 1 0 0" />
+            <body name="closing_right_front_leg_1" pos="-0.0108657 0.00191591 -0.0038" quat="1.326794897e-06 1 0 0">
+              <site name="closing_right_front_leg_1_anchor" pos="-1.61176919e-09 4.358751667e-09 -0.0009450372618" size="0.001" rgba="1 0.2 0.2 1" group="4" />
+            </body>
+            <body name="right_front_foot" pos="-0.0261547 -0.0195792 0.00155" quat="4.537911747e-07 0.342020591 0.9396924578 1.246779158e-06" />
+            <body name="right_front_knee" pos="0 0 0" quat="1 0 0 0" />
+            <body name="right_front_wheel" pos="-0.0245472 -0.0151626 0.00155" quat="1.326794897e-06 1 0 0">
+              <joint name="right_front_wheel" type="hinge" axis="0 0 1" damping="0.00002" armature="0.00000002" />
+              <inertial mass="0.00023416" pos="-0.00303071 -0.00109341 1.1992e-08" fullinertia="2.96e-09 5.734e-09 6.027e-09 1.62e-09 0 -0" />
+              <geom name="right_front_wheel_visual_0" type="mesh" mesh="lower4wheel" rgba="0.65098 0.65098 0.65098 1" contype="0" conaffinity="0" group="2" mass="0" pos="0.0135402 -0.0472392 -0.00395" quat="1.326794897e-06 1 0 0" />
+              <body name="right_front_wheel_tip" pos="-0.00937372 0.00366781 -0" quat="-0.7071054825 0 0 0.7071080799">
+                <joint name="right_front_wheel_tip" type="hinge" axis="0 0 1" damping="0.00002" armature="0.00000002" />
+                <inertial mass="0.001" pos="0 -0 -0" fullinertia="1.583e-09 1.583e-09 2.5e-09 -0 -0 0" />
+                <geom name="right_front_wheel_tip_visual_0" type="mesh" mesh="tip_wheel" rgba="0.952941 0.796078 0.486275 1" contype="0" conaffinity="0" group="2" mass="0" pos="0.0229139 0.0509071 0.00395" quat="1 0 0 0" />
+                <body name="right_front_wheel_tip_collision" pos="0 0 0" quat="1 0 0 0" />
+                <geom name="right_front_wheel_tip_contact_0" type="mesh" mesh="tip_wheel" contype="2" conaffinity="1" group="3" rgba="0.2 0.9 0.5 0.3" mass="0" friction="0.8 0.001 0.0001" pos="0.0229139 0.0509071 0.00395" quat="1 0 0 0" />
+              </body>
+              <geom name="right_front_wheel_contact_0" type="mesh" mesh="lower4wheel" contype="2" conaffinity="1" group="3" rgba="0.2 0.9 0.5 0.3" mass="0" friction="0.8 0.001 0.0001" pos="0.0135402 -0.0472392 -0.00395" quat="1.326794897e-06 1 0 0" />
+            </body>
+            <geom name="right_front_leg_contact" type="mesh" mesh="tip" contype="2" conaffinity="1" group="3" rgba="0.2 0.9 0.5 0.3" mass="0" pos="-0.00490733 0.0297472 -0.0024" quat="4.537911747e-07 0.342020591 0.9396924578 1.246779158e-06" />
+          </body>
+        </body>
+      </body>
+      <body name="right_back_thigh" pos="-0.0344665 0.0252993 0.00390154" quat="0.4999981634 0.5 0.5000018366 0.5">
+        <joint name="right_back_thigh" type="hinge" axis="0 0 1" damping="0.0005" armature="0.000002" range="-1.4 1.4" />
+        <inertial mass="0.00266922" pos="0.000643242 -0.0150871 -0.00185172" fullinertia="3.79534e-07 4.8206e-08 4.13348e-07 -3.856e-09 -9.49e-10 -3.315e-09" />
+        <geom name="right_back_thigh_visual_0" type="mesh" mesh="thigh_right" rgba="0.909804 0.678431 0.137255 1" contype="0" conaffinity="0" group="2" mass="0" pos="0 0 -0.0034" quat="1.326794897e-06 1 0 0" />
+        <geom name="right_back_thigh_visual_1" type="mesh" mesh="bearing" rgba="0.627451 0.627451 0.627451 1" contype="0" conaffinity="0" group="2" mass="0" pos="0 -0.06 -0.0033" quat="1.326794897e-06 1 0 0" />
+        <body name="closing_right_back_leg_2" pos="0 -0.03 -0.0029" quat="1.326794897e-06 1 0 0">
+          <site name="closing_right_back_leg_2_anchor" pos="1.611769187e-09 -2.501238811e-09 0.0009449576541" size="0.001" rgba="1 0.2 0.2 1" group="4" />
+        </body>
+        <geom name="right_back_thigh_contact" type="capsule" fromto="0 0 0 0 -0.03 -0.0029" size="0.003" contype="2" conaffinity="1" group="3" rgba="0.2 0.9 0.5 0.3" mass="0" />
+      </body>
+      <body name="right_back_motor_arm" pos="-0.0380665 0.0252993 0.00390154" quat="0.4999981634 0.5 0.5000018366 0.5">
+        <joint name="right_back_motor_arm" type="hinge" axis="0 0 1" damping="0.0004" armature="0.00000002" stiffness="0.012" springref="0" />
+        <inertial mass="0.000598556" pos="0.00277955 1.39931e-05 -0.000412926" fullinertia="4.383e-09 1.5672e-08 1.6958e-08 2.3e-11 4.59e-10 -1.1e-11" />
+        <geom name="right_back_motor_arm_visual_0" type="mesh" mesh="motor_arm" rgba="0.988235 0.988235 0.941176 1" contype="0" conaffinity="0" group="2" mass="0" pos="-0 0 0.0002" quat="1.326794897e-06 1 0 0" />
+        <geom name="right_back_motor_arm_visual_1" type="mesh" mesh="screw_servo" rgba="1 0.364706 0.364706 1" contype="0" conaffinity="0" group="2" mass="0" pos="0.000110692 4.58291e-05 -0.00155" quat="1.326794897e-06 0 0 1" />
+        <body name="right_back_spring" pos="0.012 0 0.0014" quat="1.326794897e-06 1 0 0">
+          <joint name="right_back_spring" type="hinge" axis="0 0 1" damping="0.00002" armature="0.00000002" />
+          <inertial mass="0.00115717" pos="-0.000511981 0.0161518 -0.000633075" fullinertia="8.6534e-08 4.703e-09 8.6725e-08 2.831e-09 -1.3e-11 4.36e-10" />
+          <geom name="right_back_spring_visual_0" type="mesh" mesh="long_spring_right" rgba="0.627451 0.627451 0.627451 1" contype="0" conaffinity="0" group="2" mass="0" pos="-0.012 0 0.0014" quat="1 0 0 0" />
+          <body name="right_back_leg" pos="-0.00113431 0.0319159 -0.00121" quat="-1.326794897e-06 1 0 0">
+            <joint name="right_back_leg" type="hinge" axis="0 0 1" damping="0.001" armature="0.00000002" stiffness="0.08" springref="0" />
+            <inertial mass="0.000994691" pos="-0.0157059 -0.00583263 0.00141061" fullinertia="6.7716e-08 7.1468e-08 1.34416e-07 -5.6268e-08 8.43e-10 7.3e-10" />
+            <geom name="right_back_leg_visual_0" type="mesh" mesh="tip" rgba="0.964706 0.964706 0.952941 1" contype="0" conaffinity="0" group="2" mass="0" pos="-0.00490733 0.0297472 -0.0024" quat="4.537911747e-07 0.342020591 0.9396924578 1.246779158e-06" />
+            <geom name="right_back_leg_visual_1" type="mesh" mesh="leg_right" rgba="0.172549 0.172549 0.168627 1" contype="0" conaffinity="0" group="2" mass="0" pos="-0.0108657 0.0319159 -0.0024" quat="-1.326794897e-06 1 0 0" />
+            <body name="closing_right_back_leg_1" pos="-0.0108657 0.00191591 -0.0038" quat="-1.326794897e-06 1 0 0">
+              <site name="closing_right_back_leg_1_anchor" pos="-1.611769187e-09 -2.513821158e-09 -0.0009449576541" size="0.001" rgba="1 0.2 0.2 1" group="4" />
+            </body>
+            <body name="right_back_foot" pos="-0.0261547 -0.0195792 0.00155" quat="4.537911747e-07 0.342020591 0.9396924578 1.246779158e-06" />
+            <body name="right_back_knee" pos="0 -0 0" quat="1 0 0 0" />
+            <body name="right_back_wheel" pos="-0.0245472 -0.0151626 0.00155" quat="1.326794897e-06 1 0 0">
+              <joint name="right_back_wheel" type="hinge" axis="0 0 1" damping="0.00002" armature="0.00000002" />
+              <inertial mass="0.00023416" pos="-0.00303071 -0.00109341 1.1992e-08" fullinertia="2.96e-09 5.734e-09 6.027e-09 1.62e-09 0 -0" />
+              <geom name="right_back_wheel_visual_0" type="mesh" mesh="lower4wheel" rgba="0.65098 0.65098 0.65098 1" contype="0" conaffinity="0" group="2" mass="0" pos="0.0135402 -0.0472392 -0.00395" quat="1.326794897e-06 1 0 0" />
+              <body name="right_back_wheel_tip" pos="-0.00937372 0.00366781 -0" quat="-9.381839456e-07 0.7071054825 0.7071080799 -9.381873918e-07">
+                <joint name="right_back_wheel_tip" type="hinge" axis="0 0 1" damping="0.00002" armature="0.00000002" />
+                <inertial mass="0.001" pos="-0 -0 0" fullinertia="1.583e-09 1.583e-09 2.5e-09 -0 -0 0" />
+                <geom name="right_back_wheel_tip_visual_0" type="mesh" mesh="tip_wheel" rgba="0.952941 0.796078 0.486275 1" contype="0" conaffinity="0" group="2" mass="0" pos="0.0229139 0.0509071 0.00395" quat="1 0 0 0" />
+                <body name="right_back_wheel_tip_collision" pos="0 0 0" quat="1 0 0 0" />
+                <geom name="right_back_wheel_tip_contact_0" type="mesh" mesh="tip_wheel" contype="2" conaffinity="1" group="3" rgba="0.2 0.9 0.5 0.3" mass="0" friction="0.8 0.001 0.0001" pos="0.0229139 0.0509071 0.00395" quat="1 0 0 0" />
+              </body>
+              <geom name="right_back_wheel_contact_0" type="mesh" mesh="lower4wheel" contype="2" conaffinity="1" group="3" rgba="0.2 0.9 0.5 0.3" mass="0" friction="0.8 0.001 0.0001" pos="0.0135402 -0.0472392 -0.00395" quat="1.326794897e-06 1 0 0" />
+            </body>
+            <geom name="right_back_leg_contact" type="mesh" mesh="tip" contype="2" conaffinity="1" group="3" rgba="0.2 0.9 0.5 0.3" mass="0" pos="-0.00490733 0.0297472 -0.0024" quat="4.537911747e-07 0.342020591 0.9396924578 1.246779158e-06" />
+          </body>
+        </body>
+      </body>
+      <body name="left_back_thigh" pos="0.0239335 0.0252993 0.00390154" quat="-0.4999981634 0.5 0.5000018366 -0.5">
+        <joint name="left_back_thigh" type="hinge" axis="0 0 1" damping="0.0005" armature="0.000002" range="-1.4 1.4" />
+        <inertial mass="0.0026692" pos="0.000643255 0.0150873 -0.00185171" fullinertia="3.79523e-07 4.8206e-08 4.13338e-07 3.854e-09 -9.49e-10 3.316e-09" />
+        <geom name="left_back_thigh_visual_0" type="mesh" mesh="thigh" rgba="0.909804 0.678431 0.137255 1" contype="0" conaffinity="0" group="2" mass="0" pos="0 0 -0.0034" quat="-1.326794897e-06 1 0 0" />
+        <geom name="left_back_thigh_visual_1" type="mesh" mesh="bearing" rgba="0.627451 0.627451 0.627451 1" contype="0" conaffinity="0" group="2" mass="0" pos="-0 -0 -0.0033" quat="-1.326794897e-06 1 0 0" />
+        <body name="closing_left_back_leg_2" pos="0 0.03 -0.0029" quat="-1.326794897e-06 1 0 0">
+          <site name="closing_left_back_leg_2_anchor" pos="-1.161176919e-08 4.332430389e-09 0.0009450398038" size="0.001" rgba="1 0.2 0.2 1" group="4" />
+        </body>
+        <geom name="left_back_thigh_contact" type="capsule" fromto="0 0 0 0 0.03 -0.0029" size="0.003" contype="2" conaffinity="1" group="3" rgba="0.2 0.9 0.5 0.3" mass="0" />
+      </body>
+      <body name="left_back_motor_arm" pos="0.0275335 0.0252993 0.00390154" quat="-0.4999981634 0.5 0.5000018366 -0.5">
+        <joint name="left_back_motor_arm" type="hinge" axis="0 0 1" damping="0.0004" armature="0.00000002" stiffness="0.012" springref="0" />
+        <inertial mass="0.000598556" pos="0.00277955 1.39931e-05 -0.000412926" fullinertia="4.383e-09 1.5672e-08 1.6958e-08 2.3e-11 4.59e-10 -1.1e-11" />
+        <geom name="left_back_motor_arm_visual_0" type="mesh" mesh="motor_arm" rgba="0.988235 0.988235 0.941176 1" contype="0" conaffinity="0" group="2" mass="0" pos="-0 0 0.0002" quat="1.326794897e-06 1 0 0" />
+        <geom name="left_back_motor_arm_visual_1" type="mesh" mesh="screw_servo" rgba="1 0.364706 0.364706 1" contype="0" conaffinity="0" group="2" mass="0" pos="0.000110692 4.58291e-05 -0.00155" quat="1.326794897e-06 0 0 1" />
+        <body name="left_back_spring" pos="0.012 0 0.0014" quat="1.326794897e-06 1 0 0">
+          <joint name="left_back_spring" type="hinge" axis="0 0 1" damping="0.00002" armature="0.00000002" />
+          <inertial mass="0.00115717" pos="-0.000512017 -0.0161518 -0.000633026" fullinertia="8.6534e-08 4.703e-09 8.6725e-08 -2.831e-09 -1.3e-11 -4.37e-10" />
+          <geom name="left_back_spring_visual_0" type="mesh" mesh="long_spring" rgba="0.627451 0.627451 0.627451 1" contype="0" conaffinity="0" group="2" mass="0" pos="-0.012 0 0.0014" quat="1 0 0 0" />
+          <body name="left_back_leg" pos="-0.00113431 -0.0319159 -0.00121" quat="1 0 0 0">
+            <joint name="left_back_leg" type="hinge" axis="0 0 1" damping="0.001" armature="0.00000002" stiffness="0.08" springref="0" />
+            <inertial mass="0.000994691" pos="-0.015706 -0.00583261 -0.00141061" fullinertia="6.7715e-08 7.147e-08 1.34417e-07 -5.6269e-08 -8.43e-10 -7.3e-10" />
+            <geom name="left_back_leg_visual_0" type="mesh" mesh="leg" rgba="0.172549 0.172549 0.168627 1" contype="0" conaffinity="0" group="2" mass="0" pos="-0.0108657 0.0319159 0.0024" quat="1 0 0 0" />
+            <geom name="left_back_leg_visual_1" type="mesh" mesh="tip" rgba="0.964706 0.964706 0.952941 1" contype="0" conaffinity="0" group="2" mass="0" pos="-0.0107247 0.0318646 0.0024" quat="1 0 0 -5e-12" />
+            <body name="closing_left_back_leg_1" pos="-0.0108657 0.00191591 0.0038" quat="1 0 0 0">
+              <site name="closing_left_back_leg_1_anchor" pos="1.161176919e-08 6.830655697e-10 -0.0009450398038" size="0.001" rgba="1 0.2 0.2 1" group="4" />
+            </body>
+            <body name="left_back_foot" pos="-0.0261547 -0.0195792 -0.00155" quat="1 0 0 -5e-12" />
+            <body name="left_back_knee" pos="0 0 0" quat="1 0 0 0" />
+            <body name="left_back_wheel" pos="-0.0245472 -0.0151626 -0.00155" quat="1.326794897e-06 1 0 0">
+              <joint name="left_back_wheel" type="hinge" axis="0 0 1" damping="0.00002" armature="0.00000002" />
+              <inertial mass="0.00023416" pos="-0.00303071 -0.00109341 1.1992e-08" fullinertia="2.96e-09 5.734e-09 6.027e-09 1.62e-09 0 -0" />
+              <geom name="left_back_wheel_visual_0" type="mesh" mesh="lower4wheel" rgba="0.65098 0.65098 0.65098 1" contype="0" conaffinity="0" group="2" mass="0" pos="0.0135402 -0.0472392 -0.00395" quat="1.326794897e-06 1 0 0" />
+              <body name="left_back_wheel_tip" pos="-0.00937372 0.00366781 -0" quat="-9.381839456e-07 0.7071054825 0.7071080799 -9.381873918e-07">
+                <joint name="left_back_wheel_tip" type="hinge" axis="0 0 1" damping="0.00002" armature="0.00000002" />
+                <inertial mass="0.001" pos="0 -0 0" fullinertia="1.583e-09 1.583e-09 2.5e-09 -0 -0 0" />
+                <geom name="left_back_wheel_tip_visual_0" type="mesh" mesh="tip_wheel" rgba="0.952941 0.796078 0.486275 1" contype="0" conaffinity="0" group="2" mass="0" pos="0.0229139 0.0509071 0.00395" quat="1 0 0 0" />
+                <body name="left_back_wheel_tip_collision" pos="0 0 0" quat="1 0 0 0" />
+                <geom name="left_back_wheel_tip_contact_0" type="mesh" mesh="tip_wheel" contype="2" conaffinity="1" group="3" rgba="0.2 0.9 0.5 0.3" mass="0" friction="0.8 0.001 0.0001" pos="0.0229139 0.0509071 0.00395" quat="1 0 0 0" />
+              </body>
+              <geom name="left_back_wheel_contact_0" type="mesh" mesh="lower4wheel" contype="2" conaffinity="1" group="3" rgba="0.2 0.9 0.5 0.3" mass="0" friction="0.8 0.001 0.0001" pos="0.0135402 -0.0472392 -0.00395" quat="1.326794897e-06 1 0 0" />
+            </body>
+            <geom name="left_back_leg_contact" type="mesh" mesh="leg" contype="2" conaffinity="1" group="3" rgba="0.2 0.9 0.5 0.3" mass="0" pos="-0.0108657 0.0319159 0.0024" quat="1 0 0 0" />
+          </body>
+        </body>
+      </body>
+      <geom name="body_contact" type="box" pos="-0.00526647 -0.000744244 0.0021" size="0.025 0.0525 0.0121" contype="2" conaffinity="1" group="3" rgba="0.2 0.5 0.9 0.3" mass="0" />
+    </body>
+  </worldbody>
+  <equality>
+    <connect name="left_front_closure" site1="closing_left_front_leg_1_anchor" site2="closing_left_front_leg_2_anchor" solref="0.004 1" solimp="0.99 0.999 0.0001" />
+    <connect name="right_front_closure" site1="closing_right_front_leg_1_anchor" site2="closing_right_front_leg_2_anchor" solref="0.004 1" solimp="0.99 0.999 0.0001" />
+    <connect name="right_back_closure" site1="closing_right_back_leg_1_anchor" site2="closing_right_back_leg_2_anchor" solref="0.004 1" solimp="0.99 0.999 0.0001" />
+    <connect name="left_back_closure" site1="closing_left_back_leg_1_anchor" site2="closing_left_back_leg_2_anchor" solref="0.004 1" solimp="0.99 0.999 0.0001" />
+  </equality>
+  <actuator>
+    <position name="left_front_servo" joint="left_front_thigh" kp="0.15" kv="0.006" ctrlrange="-1.2 1.2" forcerange="-0.245 0.245" />
+    <position name="right_front_servo" joint="right_front_thigh" kp="0.15" kv="0.006" ctrlrange="-1.2 1.2" forcerange="-0.245 0.245" />
+    <position name="right_back_servo" joint="right_back_thigh" kp="0.15" kv="0.006" ctrlrange="-1.2 1.2" forcerange="-0.245 0.245" />
+    <position name="left_back_servo" joint="left_back_thigh" kp="0.15" kv="0.006" ctrlrange="-1.2 1.2" forcerange="-0.245 0.245" />
+  </actuator>
+</mujoco>

@@ -1,0 +1,28 @@
+{
+  "mujoco_version": "3.16.0",
+  "source_links": 46,
+  "source_joints": 45,
+  "nq": 31,
+  "nv": 30,
+  "actuators": 4,
+  "equality_constraints": 4,
+  "total_mass_kg": 0.188253148,
+  "closures": [
+    {
+      "side": "left_front",
+      "source_frame_offset_m": 0.0018900796077557732
+    },
+    {
+      "side": "right_front",
+      "source_frame_offset_m": 0.001890074523582854
+    },
+    {
+      "side": "right_back",
+      "source_frame_offset_m": 0.0018899153082519574
+    },
+    {
+      "side": "left_back",
+      "source_frame_offset_m": 0.0018900796077557732
+    }
+  ]
+}

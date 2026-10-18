@@ -1,0 +1,50 @@
+[
+  {
+    "mode": "stand",
+    "simulation_seconds": 30.00000000001368,
+    "wall_seconds": 3.2044169590226375,
+    "finite": true,
+    "monotonic_time": true,
+    "warning_count": 0,
+    "max_closure_error_m": 0.0009509863421642614,
+    "max_actuator_force_Nm": 0.053966604138163246,
+    "settled_root_z_range_m": [
+      0.04103945363402042,
+      0.04116407450805469
+    ],
+    "minimum_upright_cosine": 0.989818780326968,
+    "max_body_ground_contacts": 0,
+    "max_ground_contacts": 26,
+    "driven_joint_range_rad": [
+      0.002415535082634304,
+      0.0018346684406728084,
+      0.002912271782837955,
+      0.0033232255657611176
+    ],
+    "passed": true
+  },
+  {
+    "mode": "motion",
+    "simulation_seconds": 30.00000000001368,
+    "wall_seconds": 3.39266700000735,
+    "finite": true,
+    "monotonic_time": true,
+    "warning_count": 0,
+    "max_closure_error_m": 0.0009509863421642614,
+    "max_actuator_force_Nm": 0.053966604138163246,
+    "settled_root_z_range_m": [
+      0.037946637787254454,
+      0.04432000294561995
+    ],
+    "minimum_upright_cosine": 0.9847877559561948,
+    "max_body_ground_contacts": 0,
+    "max_ground_contacts": 26,
+    "driven_joint_range_rad": [
+      0.19008131025693642,
+      0.21062708997467644,
+      0.21950441381058536,
+      0.24473145371398794
+    ],
+    "passed": true
+  }
+]

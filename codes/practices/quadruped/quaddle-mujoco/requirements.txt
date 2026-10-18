@@ -1,0 +1,8 @@
+mujoco==3.16.0
+numpy==2.5.4
+scipy==1.18.1
+trimesh==5.1.1
+fast-simplification==0.2.0
+pillow==13.0.0
+imageio==2.38.1
+imageio-ffmpeg==0.6.0

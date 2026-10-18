@@ -1,0 +1,26 @@
+.simulator {margin: 1.5rem 0 2rem; border: 1px solid var(--ifm-color-emphasis-300); border-radius: 16px; overflow: hidden; background: var(--ifm-background-surface-color);}
+.header {display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 18px 20px;}
+.header strong {display: block; font-size: 1.15rem;}
+.eyebrow {display: block; color: var(--ifm-color-emphasis-600); font-size: .68rem; letter-spacing: .12em; margin-bottom: 3px;}
+.badge {font-size: .72rem; border-radius: 20px; padding: 5px 10px; background: var(--ifm-color-emphasis-100); white-space: nowrap;}
+.stage {position: relative; height: 400px; background: #e8edf3; color: #233246;}
+.canvas {position: absolute; inset: 0;}
+.canvas canvas {width: 100%; height: 100%; display: block; touch-action: none;}
+.cover {position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 24px; background: #e8edf3f2;}
+.cover p {font-size: .85rem; margin: 12px 0 20px; max-width: 34em; overflow-wrap: anywhere;}
+.cover small {font-size: .75rem; margin-top: 12px; color: #52667a;}
+.cover button, .controls button {border: 1px solid var(--ifm-color-emphasis-300); border-radius: 8px; padding: 9px 12px; font: inherit; font-size: .8rem; cursor: pointer; background: var(--ifm-background-surface-color); color: var(--ifm-font-color-base);}
+.cover button {background: #215cbd; border-color: #215cbd; color: white; padding: 10px 20px;}
+.controls {display: flex; flex-wrap: wrap; gap: 8px; padding: 16px 16px 0;}
+.controls button {display: inline-flex; align-items: center; justify-content: center; gap: 6px;}
+.controls button[aria-pressed='true'] {background: var(--ifm-color-primary); color: white; border-color: var(--ifm-color-primary);}
+.controls button:disabled {opacity: .45; cursor: default;}
+.controls button:focus-visible, .cover button:focus-visible {outline: 3px solid var(--ifm-color-primary); outline-offset: 3px;}
+.hint {position: absolute; bottom: 12px; left: 16px; pointer-events: none; padding: 4px 8px; border-radius: 6px; background: #ffffffd9; color: #40566b; font-size: .7rem;}
+.status {font-size: .8rem; margin: 12px 18px; min-height: 1.5em; color: var(--ifm-color-emphasis-700);}
+.metrics {display: grid; grid-template-columns: repeat(3, 1fr); padding: 0 18px; margin: 0; gap: 10px;}
+.metrics div {padding: 10px 12px; background: var(--ifm-color-emphasis-100); border-radius: 8px;}
+.metrics dt {font-size: .7rem; font-weight: 400; color: var(--ifm-color-emphasis-600);}
+.metrics dd {font-size: 1.03rem; margin: 2px 0 0; font-variant-numeric: tabular-nums;}
+.caption {font-size: .75rem; line-height: 1.7; color: var(--ifm-color-emphasis-600); padding: 14px 18px 16px; margin: 0;}
+@media (max-width: 600px) {.stage {height: 310px;} .header {padding: 14px;} .badge {display: none;} .metrics {padding: 0 12px; gap: 6px;} .metrics div {padding: 8px;} .controls {padding: 12px 12px 0;} .controls button {flex: 1 0 auto;} }

@@ -1,0 +1,90 @@
+{
+  "original/LICENSE": {
+    "bytes": 1066,
+    "sha256": "95a66186edde559f5ba83c76df4c8757c16dfd1145b8cca2a23d50612604aa86"
+  },
+  "original/README.md": {
+    "bytes": 3481,
+    "sha256": "4bc725c4258d7a9c4840c1841563a098b7417a90f4b87af14f816f98a160722a"
+  },
+  "original/assets/batterie_model_bl_5c.stl": {
+    "bytes": 17984,
+    "sha256": "cca50b0cfcae6573826f8acccf85c6394146df4acfa272ae6233c72ab75e1e87"
+  },
+  "original/assets/battery_cap_thin.stl": {
+    "bytes": 2299884,
+    "sha256": "93b03d2e4c1c570ac69f52e40f1717ae4f667c0ff9c69231accb2135052e2f2c"
+  },
+  "original/assets/bearing.stl": {
+    "bytes": 28884,
+    "sha256": "fbca2ac7cf634990071c520406f38ed83f58f0e5bbaa483a4972173eb596280d"
+  },
+  "original/assets/body.stl": {
+    "bytes": 1683084,
+    "sha256": "9fd4a2290ff58f00d4692886ad79f6497ccce3ce8480b5a95998ac8109a8535a"
+  },
+  "original/assets/body_bar.stl": {
+    "bytes": 14484,
+    "sha256": "cb4529530997b9d7f95dbe2430ce0e30a9a3cd0bcef0b495181d3cb96e606dbc"
+  },
+  "original/assets/gear.stl": {
+    "bytes": 201784,
+    "sha256": "bafe4e19adb0d9be5118b741818874d63425e280e90297561b3de0f46636119f"
+  },
+  "original/assets/leg.stl": {
+    "bytes": 284184,
+    "sha256": "8335a4671b94eb21f49337ea2f725f8b3250f3dfe88e83652caf55cb1e28760b"
+  },
+  "original/assets/leg_right.stl": {
+    "bytes": 279634,
+    "sha256": "262d2e2f47200b4a4c614c37b26a1081b4f4e38866539a7e6f3d7f40ef8f6354"
+  },
+  "original/assets/lego_top_cap.stl": {
+    "bytes": 848684,
+    "sha256": "7bfbd964adfe12348382a3ef4a5367b4f6c47908add3a9bb0ac1ce896ebc9c68"
+  },
+  "original/assets/long_spring.stl": {
+    "bytes": 53131084,
+    "sha256": "0ef632463da991ad31ec5a9f8d6f3f653f73f789730a6063977bf813e7ec8a67"
+  },
+  "original/assets/long_spring_right.stl": {
+    "bytes": 53132184,
+    "sha256": "debc20c92b3235d23b97c641752168ad0117622d8a0ef4fefb64ebd70ca4e7b7"
+  },
+  "original/assets/lower4wheel.stl": {
+    "bytes": 1131884,
+    "sha256": "7d14f2cec84ff1d858d55d7757001aa7b64f992ae17ef40e6154005937569d50"
+  },
+  "original/assets/motor_arm.stl": {
+    "bytes": 177184,
+    "sha256": "ad075c8186c5a28ff43c0181bf62fdcc6f96a4d8a3ae3d34c58c198913a3e3b0"
+  },
+  "original/assets/power_cap.stl": {
+    "bytes": 1546284,
+    "sha256": "4530c3f3e500b9a20827d5cf5f7e4223385af9da22489813b002357cad67a209"
+  },
+  "original/assets/screw_servo.stl": {
+    "bytes": 1134784,
+    "sha256": "40e5cb2402d64052bfe44d5edc4d50a88ded47b2654ccb5f3c93441de840444b"
+  },
+  "original/assets/thigh.stl": {
+    "bytes": 2452184,
+    "sha256": "95f3f691a0746e400509de796837d4909a9a591ee5ec2cb4414c5e899341d389"
+  },
+  "original/assets/thigh_right.stl": {
+    "bytes": 2455184,
+    "sha256": "55f78c5c26bc747344835cd25358b82b088c8830b65aa3b6134638e2f5116fca"
+  },
+  "original/assets/tip.stl": {
+    "bytes": 308884,
+    "sha256": "791fa68be3fcf8ff4415db7c1145c5ee8fe2e74e9bf7369ffb6d3abe716908ca"
+  },
+  "original/assets/tip_wheel.stl": {
+    "bytes": 28884,
+    "sha256": "900135f2e00e65475a4eb3158cdce43789be33903e11f8b011d78f10c1f3ea94"
+  },
+  "original/robot.urdf": {
+    "bytes": 43337,
+    "sha256": "90ef74b21c19f83915da35bb64132bdf9228c82e5a167fe18dbb450286a0e598"
+  }
+}

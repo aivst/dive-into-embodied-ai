@@ -2,6 +2,8 @@ node_modules/
 build/
 .docusaurus/
 .cache-loader/
+# Generated from the pinned npm package and canonical Quaddle model at build time.
+static/quaddle/
 .DS_Store
 .env
 .env.local

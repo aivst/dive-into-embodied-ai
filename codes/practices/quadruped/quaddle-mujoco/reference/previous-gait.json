@@ -1,0 +1,43 @@
+{
+  "name": "searched_walk_with_heading_feedback",
+  "joint_order": [
+    "left_front",
+    "right_front",
+    "right_back",
+    "left_back"
+  ],
+  "actuator_signs": [
+    1,
+    -1,
+    -1,
+    1
+  ],
+  "amplitude_rad": [
+    0.17640332031050715,
+    0.17640332031050715,
+    0.8310583512258714,
+    0.8310583512258714
+  ],
+  "bias_rad": [
+    -0.561386401397791,
+    -0.561386401397791,
+    -0.48912283223648023,
+    -0.48912283223648023
+  ],
+  "phase_rad": [
+    0,
+    5.911635806679101,
+    3.955189554185167,
+    3.854181054374787
+  ],
+  "frequency_hz": 2.974810767501337,
+  "control_hz": 100,
+  "settle_seconds": 2.0,
+  "ramp_seconds": 1.0,
+  "note": "Locally searched periodic joint gait for the approximate MuJoCo model; not Petoi firmware or a hardware-validated policy.",
+  "harmonic": 0.08075968389624978,
+  "heading_kp": 0.5,
+  "heading_kd": 0.03,
+  "lateral_kp": 2.0,
+  "steering_limit": 0.5
+}

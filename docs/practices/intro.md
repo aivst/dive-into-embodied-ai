@@ -22,7 +22,7 @@ displayed_sidebar: practicesOverviewSidebar
 | 方向 | 项目数 | 适合 |
 |------|--------|------|
 | [机械臂](./robot-arm/placeholder) | 5 个 | VLA / 数据采集 / 模仿学习入门 |
-| [四足机器人](./quadruped/placeholder) | 4 个 | 强化学习 / 控制 / sim2real |
+| [四足机器人](./quadruped/placeholder) | 5 个 | 强化学习 / 控制 / sim2real |
 | [双足 / 人形](./humanoid/placeholder) | 1 个已上线，2 个规划中 | 进阶控制 / 强化学习 / 任务规划 |
 | [移动操作](./mobile-manipulation/placeholder) | 3 个 | 导航 + 操作综合 |
 | [轮足机器人](./wheel-legged/placeholder) | 预告 | 欠驱动平衡 / Isaac Lab / 跨仿真验证 |
@@ -43,6 +43,7 @@ displayed_sidebar: practicesOverviewSidebar
 | 项目 | 技术主线 | 状态 |
 | --- | --- | --- |
 | [从零到一搭建四足机器人](./quadruped/cs123/intro) | MuJoCo、PD 控制、运动学、步态、策略训练与感知 | 总览与 8 章可读 |
+| [Petoi Quaddle 四舵机步行仿真](./quadruped/quaddle-mujoco/) | 官方 URDF 适配、周期控制、接触验证与长距离地面显示 | 可用 |
 | [MicroDuck RL：走路、起身和翻滚](./humanoid/microduck-rl/) | mjlab、MuJoCo Warp、CUDA 并行 PPO、18 个动作模式 | 可用 |
 | [MuJoCo 仿真入门](./robot-arm/mujoco-arm-pick-place) | MJCF、物理仿真、Python 控制 | 可用 |
 | [DDPG InvertedPendulum](./robot-arm/ddpg-mujoco/invertedpendulum-v5) | 连续控制基础与 DDPG baseline | 可用 |

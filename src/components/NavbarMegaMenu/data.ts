@@ -216,6 +216,14 @@ export const megaMenus: MegaMenuConfig[] = [
             keywords: ['CS123', 'MuJoCo', translate({message: "8 章"})],
           },
           {
+            icon: '🐕',
+            title: translate({message: "Petoi Quaddle 四足步行仿真"}),
+            description: translate({message: "在网页里控制行走与停止，学习四舵机步态和残差 PPO 训练。"}),
+            to: '/docs/practices/quadruped/quaddle-mujoco',
+            activeBasePath: '/docs/practices/quadruped/quaddle-mujoco',
+            keywords: ['Petoi', 'Quaddle', 'MuJoCo'],
+          },
+          {
             icon: '🐥',
             title: translate({message: "MicroDuck RL 小黄鸭双足机器人"}),
             description: translate({message: "mjlab + MuJoCo Warp GPU 并行 PPO 与稳定步态训练。"}),

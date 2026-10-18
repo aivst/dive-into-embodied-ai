@@ -1,0 +1,6 @@
+.venv/
+.venv-rl/
+__pycache__/
+.DS_Store
+MUJOCO_LOG.TXT
+outputs/

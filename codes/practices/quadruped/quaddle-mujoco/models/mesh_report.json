@@ -1,0 +1,97 @@
+[
+  {
+    "file": "batterie_model_bl_5c.stl",
+    "original_faces": 358,
+    "rendered_faces": 358
+  },
+  {
+    "file": "battery_cap_thin.stl",
+    "original_faces": 45996,
+    "rendered_faces": 16000
+  },
+  {
+    "file": "bearing.stl",
+    "original_faces": 576,
+    "rendered_faces": 576
+  },
+  {
+    "file": "body.stl",
+    "original_faces": 33660,
+    "rendered_faces": 16000
+  },
+  {
+    "file": "body_bar.stl",
+    "original_faces": 288,
+    "rendered_faces": 288
+  },
+  {
+    "file": "gear.stl",
+    "original_faces": 4034,
+    "rendered_faces": 4034
+  },
+  {
+    "file": "leg.stl",
+    "original_faces": 5682,
+    "rendered_faces": 5682
+  },
+  {
+    "file": "leg_right.stl",
+    "original_faces": 5591,
+    "rendered_faces": 5591
+  },
+  {
+    "file": "lego_top_cap.stl",
+    "original_faces": 16972,
+    "rendered_faces": 16000
+  },
+  {
+    "file": "long_spring.stl",
+    "original_faces": 1062620,
+    "rendered_faces": 12000
+  },
+  {
+    "file": "long_spring_right.stl",
+    "original_faces": 1062642,
+    "rendered_faces": 12000
+  },
+  {
+    "file": "lower4wheel.stl",
+    "original_faces": 22636,
+    "rendered_faces": 16000
+  },
+  {
+    "file": "motor_arm.stl",
+    "original_faces": 3542,
+    "rendered_faces": 3542
+  },
+  {
+    "file": "power_cap.stl",
+    "original_faces": 30924,
+    "rendered_faces": 16000
+  },
+  {
+    "file": "screw_servo.stl",
+    "original_faces": 22694,
+    "rendered_faces": 16000
+  },
+  {
+    "file": "thigh.stl",
+    "original_faces": 49042,
+    "rendered_faces": 16000
+  },
+  {
+    "file": "thigh_right.stl",
+    "original_faces": 49102,
+    "rendered_faces": 16000
+  },
+  {
+    "file": "tip.stl",
+    "original_faces": 6176,
+    "rendered_faces": 6176
+  },
+  {
+    "file": "tip_wheel.stl",
+    "original_faces": 576,
+    "rendered_faces": 576
+  }
+]

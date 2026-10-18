@@ -1,0 +1,14 @@
+{
+  "checks": {
+    "walk": true,
+    "stop": true,
+    "pause_time_frozen": true,
+    "reset": true,
+    "offscreen_suspension": true,
+    "mobile_390px_no_page_overflow": true
+  },
+  "observed_forward_m": 11.28,
+  "observed_stop_speed_m_s": 0,
+  "browser": "Codex in-app browser",
+  "scope": "Interactive UI checks against localhost static build; not a learned policy"
+}

@@ -50,6 +50,7 @@ const config: Config = {
   },
 
   plugins: [
+    './scripts/docusaurus-quaddle.cjs',
     function nativeCssLayers() {
       return {
         name: 'native-css-layers',
