@@ -22,7 +22,7 @@ Before starting, check the environment and goals. Keep your code, parameters, an
 | Direction | Projects | Suitable for |
 | --- | --- | --- |
 | [Robot arms](/docs/practices/robot-arm/placeholder) | 5 | VLA, data collection, and imitation learning |
-| [Quadrupeds](/docs/practices/quadruped/placeholder) | 4 | Reinforcement learning, control, and sim-to-real |
+| [Quadrupeds](/docs/practices/quadruped/placeholder) | 5 | Reinforcement learning, control, and sim-to-real |
 | [Bipeds and humanoids](/docs/practices/humanoid/placeholder) | 1 available, 2 planned | Advanced control, reinforcement learning, and task planning |
 | [Mobile manipulation](/docs/practices/mobile-manipulation/placeholder) | 3 | Combining navigation and manipulation |
 | [Wheeled bipeds](/docs/practices/wheel-legged/placeholder) | Preview | Underactuated balance, Isaac Lab, and cross-simulator validation |
@@ -43,6 +43,7 @@ Before starting, check the environment and goals. Keep your code, parameters, an
 | Project | Technical path | Status |
 | --- | --- | --- |
 | [Build a quadruped from scratch](/docs/practices/quadruped/cs123/intro) | MuJoCo, PD control, kinematics, gaits, policy training, and perception | Overview and 8 chapters available |
+| [Petoi Quaddle four-servo walking simulation](/docs/practices/quadruped/quaddle-mujoco) | Official URDF adaptation, browser controls, periodic gaits, and residual PPO training | Available |
 | [MicroDuck RL: walking, standing up, and rolling](/docs/practices/humanoid/microduck-rl) | mjlab, MuJoCo Warp, parallel PPO on CUDA, and 18 motion modes | Available |
 | [Getting started with MuJoCo](/docs/practices/robot-arm/mujoco-arm-pick-place) | MJCF, physics simulation, and Python control | Available |
 | [DDPG InvertedPendulum](/docs/practices/robot-arm/ddpg-mujoco/invertedpendulum-v5) | Continuous-control basics and a DDPG baseline | Available |

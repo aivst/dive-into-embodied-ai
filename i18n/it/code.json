@@ -404,6 +404,12 @@
   "仿真实战": {
     "message": "Progetti di simulazione"
   },
+  "Petoi Quaddle 四足步行仿真": {
+    "message": "Simulazione di camminata Petoi Quaddle"
+  },
+  "在网页里控制行走与停止，学习四舵机步态和残差 PPO 训练。": {
+    "message": "Controlla la camminata e l'arresto dal browser e studia le andature con quattro servomotori e l'addestramento PPO residuo."
+  },
   "MicroDuck RL 小黄鸭双足机器人": {
     "message": "Bipede MicroDuck RL"
   },

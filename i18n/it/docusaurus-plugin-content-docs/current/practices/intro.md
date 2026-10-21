@@ -22,7 +22,7 @@ Verifica ambiente e obiettivi prima di iniziare. Conserva codice, parametri e ri
 | Direzione | Progetti | Adatta a |
 | --- | --- | --- |
 | [Bracci](/docs/practices/robot-arm/placeholder) | 5 | VLA, dati e imitazione |
-| [Quadrupedi](/docs/practices/quadruped/placeholder) | 4 | Rinforzo, controllo e sim-to-real |
+| [Quadrupedi](/docs/practices/quadruped/placeholder) | 5 | Rinforzo, controllo e sim-to-real |
 | [Bipedi e umanoidi](/docs/practices/humanoid/placeholder) | 1 disponibile, 2 previsti | Controllo avanzato, rinforzo e pianificazione |
 | [Manipolazione mobile](/docs/practices/mobile-manipulation/placeholder) | 3 | Navigazione e manipolazione |
 | [Bipedi su ruote](/docs/practices/wheel-legged/placeholder) | Anteprima | Equilibrio sottoattuato, Isaac Lab e validazione tra simulatori |
@@ -43,6 +43,7 @@ Verifica ambiente e obiettivi prima di iniziare. Conserva codice, parametri e ri
 | Progetto | Percorso tecnico | Stato |
 | --- | --- | --- |
 | [Quadrupede da zero](/docs/practices/quadruped/cs123/intro) | MuJoCo, PD, cinematica, andature, politiche e percezione | Panoramica e 8 capitoli disponibili |
+| [Simulazione Petoi Quaddle con quattro servomotori](/docs/practices/quadruped/quaddle-mujoco) | Adattamento dell'URDF ufficiale, controllo dal browser, andature periodiche e addestramento PPO residuo | Disponibile |
 | [MicroDuck RL](/docs/practices/humanoid/microduck-rl) | mjlab, MuJoCo Warp, PPO parallelo su CUDA e 18 movimenti | Disponibile |
 | [Primi passi con MuJoCo](/docs/practices/robot-arm/mujoco-arm-pick-place) | MJCF, fisica e controllo Python | Disponibile |
 | [DDPG InvertedPendulum](/docs/practices/robot-arm/ddpg-mujoco/invertedpendulum-v5) | Controllo continuo e riferimento DDPG | Disponibile |
