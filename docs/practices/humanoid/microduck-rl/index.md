@@ -1,270 +1,234 @@
 ---
-title: "MicroDuck RL：让小黄鸭学会起身、转向和踢球"
+title: "MicroDuck RL：教小黄鸭学会一个动作"
 sidebar_position: 2
 displayed_sidebar: practicesHumanoidSidebar
-description: "从 MicroDuck 机器人模型、mjlab 和 MuJoCo Warp，到三个经过验收的动作演示。"
+description: "看动作、玩奖励实验，再亲手启动一次 PPO 训练，让小黄鸭从试错中学习。"
 ---
 
-# MicroDuck RL：让小黄鸭学会起身、转向和踢球
+import {ActionGallery, TrainingLoop, RewardLab} from '@site/src/components/docs/practices/MicroDuckLesson';
 
-先看结果，再拆训练过程。
+# MicroDuck RL：教小黄鸭学会一个动作
 
-![MicroDuck 跨模式训练指标汇总（部分模式）](./figs/microduck-matrix-summary.webp)
+如果不给小黄鸭写好每一步动作，只告诉它“这样做可以得分”，它能学会站起来、转向，甚至踢球吗？先选一段视频，看看它的答案。
 
-这张图展示能从 TensorBoard 汇总出的训练指标；18 个模式的最终 checkpoint 和回放状态，以后面的结果表为准。
+[先看动作 ↓](#先看你想教它哪一招) · [动手训练 ↓](#动手启动你的第一次训练) · [玩奖励实验 ↓](#你来设计奖励)
 
-这不是一段手工编排的动作序列。上面的每个 checkpoint 都经过 PPO 训练，再由同一个离屏评估脚本回放成视频。小黄鸭在仿真里可以走路、从地上站起来、捡东西、踢球，也可以切换到轮式底盘滑行。
+## 先看：你想教它哪一招？
 
-:::tip[这次实验做到哪一步了]
+下面是仿真中训练后策略的回放。点击播放，再展开视频下的问题。三个动作来自各自独立的策略。
 
-- **18/18 个任务**完成独立训练，并生成了可加载的 checkpoint；
-- **18/18 个任务**完成 200 帧离屏回放，回放结果和统计文件保存在 `logs/mode_matrix_stable/`；
-- 重点动作已经整理成 GIF 和 MP4，下面可以直接播放；
-- 这里的“稳定”指固定命令、单环境、约 4 秒的仿真回放通过，不等同于多 seed 鲁棒性，更不等同于真机安全验证。
+<ActionGallery />
+
+这一课，我们选择**平地走路**作为动手任务：目标容易理解，也方便改变速度、观察效果。上面的起身和踢球，是理解了训练流程之后可以继续探索的技能。
+
+| 你的路线 | 需要什么 | 完成后你能做到 |
+| --- | --- | --- |
+| 先体验 | 浏览器即可 | 看懂训练闭环，完成奖励互动与观察题 |
+| 动手训练 | Linux、NVIDIA GPU、已安装 Git 和 uv | 启动一次 PPO 训练，保存并回放自己的策略 |
+| 继续挑战 | 完成第一次训练 | 修改一个奖励项，用视频与指标比较变化 |
+
+不需要先掌握 PPO 的全部公式。先弄清楚三个问题：**它能感到什么？它能控制什么？什么行为能得分？**
+
+## 小黄鸭不是在照着视频跳舞
+
+想象你在教一个刚学走路的小朋友：给出“向前走”的目标，让它尝试，再根据结果反馈。这里，反馈由仿真环境中的奖励函数计算。
+
+| 概念 | 在走路任务里是什么 | 你可以这样理解 |
+| --- | --- | --- |
+| 观测 observation | 身体姿态相关信息、关节角度和速度、目标命令等 | 我现在怎么样，要往哪里走？ |
+| 动作 action | 给关节设置目标位置，由执行器模型产生运动 | 接下来腿和身体怎么动？ |
+| 奖励 reward | 跟上目标速度、保持姿态、减少抖动等信号 | 这次尝试离目标更近了吗？ |
+| 策略 policy | 将观测映射到动作的神经网络 | 小黄鸭逐渐学会的动作习惯 |
+| checkpoint | 保存下来的模型及训练状态 | 把当前学到的东西存个档 |
+
+这里的走路策略不读取视频画面来模仿。视频是训练后的展示；MuJoCo 计算物理运动，mjlab 组织环境，PPO 利用尝试得到的经验更新策略。
+
+<TrainingLoop />
+
+**注意“走一步”和“学一次”的区别：**策略会连续输出很多步动作；PPO 收集一批经验后才更新网络。多个并行环境，相当于让许多小黄鸭同时练习，再一起贡献经验。
+
+## 你来设计奖励
+
+先猜一下：如果只奖励“球走得远”，一个把球撞远、自己却倒地的小黄鸭，会不会得高分？下面用三个假想结果做个小实验。
+
+<RewardLab />
+
+试着完成两件事：让“踢球后站稳”得分最高；再把动作代价加大，看看什么时候“不动”反而更划算。
+
+真实训练还涉及探索、整段轨迹的累计回报和终止条件。这个实验帮助你理解评分规则，不是在浏览器里训练完整机器人。
+
+## 动手：启动你的第一次训练
+
+以下命令使用 Linux Bash，在教程仓库中运行。本课使用 NVIDIA CUDA 路线；没有对应 GPU，可以先完成上面的体验路线。首次安装需要下载较大的依赖包，请预留网络和磁盘空间。
+
+### 1. 准备环境：确认能找到小黄鸭
+
+先获取[教程仓库](https://github.com/datawhalechina/dive-into-embodied-ai)，进入仓库根目录，再执行：
+
+```bash
+cd codes/practices/humanoid/microduck-rl
+uv sync --locked
+uv run python -c "import torch; print('CUDA available:', torch.cuda.is_available())"
+uv run list-envs
+```
+
+**成功信号：**CUDA 检查输出 `True`，任务列表里能找到 `Mjlab-Velocity-Flat-MicroDuck`。后续命令都在这个代码目录下执行。依赖版本已经写入锁文件，首次运行先保持原配置。
+
+:::info[我能直接下载视频里的模型吗？]
+
+当前教程仓库提供代码和演示视频，没有随页面分发这些精选视频对应的 checkpoint。你可以先看视频，再按下面的步骤训练自己的模型。如果课程提供了模型文件，需要确认它对应的任务和代码版本后再播放。
 
 :::
 
-## 三个可直接观看的动作
-
-下面三段是本页的主展示素材，统一使用实际 mjlab 环境、固定 seed 42 和近距离镜头渲染。GIF 直接嵌在教程里，点击下方链接可以下载同源 MP4。
-
-### 轮式起身
-
-从趴地状态起身，完成后保持站立。
-
-![MicroDuck 轮式起身：从地面恢复站立](./figs/focus-final/roller_standup_final.gif)
-
-[下载轮式起身 MP4](./figs/focus-final/roller_standup_final.mp4)
-
-### 轮式转向
-
-使用 Swizzle 的阶段命令完成转向，转过来后保持稳定。
-
-![MicroDuck 轮式转向](./figs/focus-final/roller_swizzle_final.gif)
-
-[下载轮式转向 MP4](./figs/focus-final/roller_swizzle_final.mp4)
-
-### 踢球
-
-策略抬脚完成触球，视频保留触球和收势过程，避免把后续 episode 重置画面混进演示。
-
-![MicroDuck 踢球](./figs/focus-final/ballkick_final.gif)
-
-[下载踢球 MP4](./figs/focus-final/ballkick_final.mp4)
-
-## 实验中的新动作：奶龙大笑
-
-这个动作需要手臂参与：先双手捧腹、身体前仰大笑，再向后倒，随后左手左腿、右手右腿交替敲击地面，最后回到抱腹姿态。原始 MicroDuck 模型只有腿部和头部的 14 个舵机，因此我为这个实验动作增加了左右肩、左右肘四个手臂关节，以及手掌碰撞几何。
-
-![MicroDuck 奶龙大笑动作参考轨迹](./figs/experimental/laugh_choreo_reference.gif)
-
-[下载奶龙大笑动作参考 MP4](./figs/experimental/laugh_choreo_reference.mp4)
-
-这段视频是按同一组动作关键帧生成的稳定参考轨迹，用来确认动作设计和镜头效果；带手臂的 PPO 策略仍在训练和验收中，暂不计入上面的三个正式结果。当前模型没有独立下颌舵机，所以视频里的“大笑”由捧腹、身体后仰、头部动作和交替敲地表达，嘴部开合需要后续加入真实的 jaw actuator。
-
-## 其余训练 case
-
-其余任务的 checkpoint、日志和原始回放继续保留在开发机实验目录，当前不进入教程发布页。发布页只展示上面三段已经人工验收过的动作，避免读者把静态姿态、失稳过程或 episode 重置误认为完成动作。
-
-## 这个项目到底在做什么
-
-MicroDuck 是 Pollen Robotics 的小型双足机器人，约 800 g、约 25 cm 高，腿部和身体使用 Dynamixel XL330 舵机。它的体型很小，但训练链路并不小：需要把 3D 资产、执行器特性、接触动力学、观测、奖励和部署接口放到同一个可复现工程里。
-
-这也是它适合放进 Dive into 教程的原因：读者可以从一个很具体的“小黄鸭”出发，看清楚强化学习机器人项目中每一层是怎么接起来的。
-
-| 层次 | 在 MicroDuck 里对应什么 |
-| --- | --- |
-| 机器人模型 | MJCF、STL 网格、关节限位和碰撞几何 |
-| 执行器 | BAM（电机力矩、摩擦、饱和等非理想因素的近似） |
-| 仿真 | MuJoCo + MuJoCo Warp，多个环境并行 stepping |
-| 学习算法 | PPO / rsl_rl |
-| 策略接口 | 61D actor observation → 14D 舵机动作 |
-| 交付形式 | PyTorch checkpoint、ONNX 推理模型、离屏回放 |
-
-## 训练不是拿视频当真值
-
-视频是训练后的**结果展示**，不是训练标签。每个仿真步里，环境知道机器人当前的姿态、速度、接触和命令；策略根据观测输出动作，物理引擎推进一小步，然后环境给出奖励和是否结束的信号。
-
-```mermaid
-flowchart LR
-  A[命令<br/>速度 / 起身 / 踢球] --> B[观测<br/>姿态·速度·关节·接触]
-  B --> C[PPO 策略<br/>61D → 14D]
-  C --> D[BAM 执行器<br/>目标位置 → 力矩]
-  D --> E[MuJoCo Warp<br/>接触动力学]
-  E --> F[奖励与终止<br/>下一帧观测]
-  F --> B
-```
-
-每个模式都是一条独立的 PPO 训练任务。共享的是机器人模型、观测和动作接口；最终网络权重不共享。这样做的原因很实际：走路希望持续跟踪速度，起身希望完成一个阶段动作，踢球希望在短时间内产生冲击，翻滚则允许身体主动接触地面，它们的目标并不相同。
-
-### 奖励函数怎么把动作“塑形”出来
-
-奖励不是一句“做得像人就加分”，而是几类可测量的量加起来。不同任务会删减或调整其中一些项。
-
-| 奖励 / 终止信号 | 直观含义 | 典型用途 |
-| --- | --- | --- |
-| 速度或方向跟踪 | 实际速度接近期望命令 | Velocity、滚轮速度 |
-| 姿态与站立高度 | 身体保持可控姿态，不塌腰、不钻地 | 走路、起身 |
-| 目标动作进度 | 头部下探、回到站立位、球的位移等 | GroundPick、BallKick、StandUp |
-| 足端接触与步态 | 交替支撑、抬脚、落脚更自然 | 双足行走 |
-| 动作变化与力矩 | 少抖动、少用不必要的力 | 几乎所有任务 |
-| `fell_over` / `nan_state` | 跌倒或数值异常，直接结束 episode | 安全边界与数值保护 |
-
-例如速度模式里，策略不能只“躺着不动”：躺着可能让某些姿态项变好，但速度跟踪、存活时间、足端接触和跌倒终止会一起把这个投机解压下去。滚轮模式则会换成 `wheel_speed`、`heading_hold` 等更适合轮式运动的项。
-
-## 从 smoke test 到正式训练
-
-### 开发机和兼容性
-
-本次正式训练使用 `dev1-docker` 上的 8 张 RTX 4090。宿主机 Driver 535.98，系统报告 CUDA 12.2；没有升级驱动，而是使用 CUDA 12.6 的用户态 Torch wheel。
-
-| 组件 | 本次使用版本 |
-| --- | --- |
-| Python | 3.12.13 |
-| PyTorch | 2.7.1 + cu126 |
-| Warp | 1.12.0 |
-| mjlab | 1.3.0 |
-| MuJoCo Warp | 3.8.1 |
-| GPU | 8 × NVIDIA RTX 4090，单卡约 24.6 GiB |
-
-Driver 535 下会看到 `CUDA Graphs disabled`。这意味着少了一项性能优化，不意味着 CUDA stepping 或 PPO 训练不可用。要迁移到其他机器，先跑 smoke test，不要直接照搬吞吐和训练时间。
-
-### 第一步：5 个 iteration 的闭环检查
+### 2. 先跑 5 轮，检查整条链路
 
 ```bash
-cd codes/practices/humanoid/microduck-rl
-UV_HTTP_TIMEOUT=600 uv sync --locked
-
-uv run list-envs | grep MicroDuck
-
 WANDB_MODE=offline uv run train Mjlab-Velocity-Flat-MicroDuck \
   --env.scene.num-envs 64 \
-  --env.seed 42 \
-  --agent.seed 42 \
-  --agent.max-iterations 5
+  --env.seed 42 --agent.seed 42 \
+  --agent.max-iterations 5 \
+  --agent.logger tensorboard \
+  --agent.experiment-name tutorial_smoke \
+  --agent.upload-model False
 ```
 
-这个阶段只看四件事：任务能否注册、MJCF 和网格能否加载、GPU 是否能正常 stepping、是否出现 NaN / Inf / OOM。5 个 iteration 的 checkpoint 只能证明管线通了，不能拿来宣传“学会走路”。
+这一步会创建仿真环境、采样经验并执行 PPO 更新。**成功信号：**终端出现训练迭代信息，程序正常结束，并在 `logs/rsl_rl/tutorial_smoke/` 下留下训练记录。5 轮是检查能否运行，还不足以期待漂亮的步态。
 
-### 第二步：分阶段训练 18 个任务
+| 你遇到的现象 | 先检查什么 |
+| --- | --- |
+| 找不到 `uv` | 先安装 uv，再执行环境同步 |
+| CUDA 检查为 `False` | GPU 是否对当前环境可见、驱动与 Torch 是否匹配 |
+| 显存不足 / OOM | 将 `num-envs` 从 64 降到 32 或 16，再做短训练检查 |
+| 找不到任务 | 是否在正确代码目录、是否完成 `uv sync --locked` |
+| 出现 NaN / Inf | 先保留报错和配置，检查模型、观测及奖励中的异常值 |
 
-训练脚本把任务串行跑，先从 smoke checkpoint 续训，再按每个任务的目标轮数继续训练。串行是为了控制单卡显存和日志数量；并不是 18 个模式共享一个 PPO 网络。
+### 3. 正式练习：给它更多尝试机会
+
+确认短训练通过后，再运行下面的单任务训练。它会**从零开始一个新实验**，并不自动接着前面的 5 轮训练。
 
 ```bash
-cd codes/practices/humanoid/microduck-rl
-./scripts/train_stable_matrix_stage1.sh
-./scripts/train_stable_matrix_stage2.sh
+WANDB_MODE=offline uv run train Mjlab-Velocity-Flat-MicroDuck \
+  --env.scene.num-envs 64 \
+  --env.seed 42 --agent.seed 42 \
+  --agent.max-iterations 1500 \
+  --agent.save-interval 100 \
+  --agent.logger tensorboard \
+  --agent.experiment-name tutorial_walk \
+  --agent.run-name first_walk \
+  --agent.upload-model False
 ```
 
-训练完成后生成回放和汇总图：
+1500 轮是这次练习的观察预算，不是保证学会的门槛。实际效果和耗时取决于配置、硬件及训练过程。每 100 轮保存一次模型，方便之后回看它的成长。
+
+想看训练曲线，在另一个终端进入相同代码目录运行：
 
 ```bash
-./scripts/evaluate_stable_matrix.sh
-uv run python scripts/summarize_training_matrix.py
+uv run tensorboard --logdir logs/rsl_rl/tutorial_walk --port 6006
 ```
 
-最后一步会使用实际 mjlab 环境读取每个任务的 checkpoint，固定命令渲染 200 帧，并记录 `done_count`、躯干最低高度和直立度代理指标。教程里嵌入的 GIF/MP4 都来自这一步，不是从训练日志里截一段画面。
+在运行训练的机器上打开 `http://localhost:6006`；远程训练时先转发 6006 端口。先看平均回报是否变化、episode 长度是否变化，以及是否出现数值异常。**奖励变高之后，还要看视频里它到底学会了什么。**
 
-## 训练结果：18 个模式各自有一份策略
+### 4. 打开自己的模型存档
 
-## 验收记录：三个主展示动作
-
-本轮按实际 mjlab 的固定条件回放重新筛选主展示动作。最终使用轮式起身、轮式转向和踢球：动作过程清楚，素材经过近距离裁切，踢球片段还截去了后续重置画面。
-
-| 动作 | 说明 | 固定条件验收 | GIF | MP4 |
-| --- | --- | --- | --- | --- |
-| RollerStandUp | 从趴地状态起身并站稳 | 起身后保持站立；初始趴地帧单独计入筛查 | [播放](./figs/focus-final/roller_standup_final.gif) | [下载](./figs/focus-final/roller_standup_final.mp4) |
-| Velocity-Swizzle | 轮式转向 | `0/150` 疑似倒地帧；最低躯干高度 0.0975 m；直立度最低 0.9887 | [播放](./figs/focus-final/roller_swizzle_final.gif) | [下载](./figs/focus-final/roller_swizzle_final.mp4) |
-| BallKick-Flat | 踢球并收势 | `0/120` 疑似倒地帧；最低躯干高度 0.0955 m；直立度最低 0.7072 | [播放](./figs/focus-final/ballkick_final.gif) | [下载](./figs/focus-final/ballkick_final.mp4) |
-
-三段视频和完整验收字段见 [`figs/focus-final/evaluation.tsv`](./figs/focus-final/evaluation.tsv)。统一验收方式是实际 mjlab 环境、固定 seed 42、单环境、50 Hz；`fell_like` 只用于筛查画面中的明显失稳，不能替代多 seed 或真机测试。
-
-原先集中训练的 `StandUp-Flat`、`GroundPick-Flat` 仍保留在训练脚本和实验日志中。当前复核显示 StandUp 中间姿态不连贯，GroundPick 微调后仍停在低伏姿态，因此暂不作为首页主展示。踢球主展示使用的是单独固定条件回放，并截取了完成踢球后的稳定收势段。
-
-下表里的“轮数”是最终 checkpoint 的 iteration；“回放”表示该 checkpoint 已经被离屏脚本加载并生成视频。`ok` 是工程验收状态，不代表在所有随机地形、所有速度和真机上都稳定。
-
-| 模式 | 任务 ID | checkpoint | 回放 |
-| --- | --- | ---: | :---: |
-| 平地走路 | `Velocity-Flat` | 3000 | ✅ |
-| 粗糙地面走路 | `Velocity-Rough` | 3000 | ✅ |
-| 平地速度 + 起立 | `VelStand-Flat` | 2500 | ✅ |
-| 粗糙地面速度 + 起立 | `VelStand-Rough` | 2500 | ✅ |
-| 平地起身 | `StandUp-Flat` | 4000 | ✅ |
-| 粗糙地面起身 | `StandUp-Rough` | 4000 | ✅ |
-| 平地坐下 / 起立 | `SitStand-Flat` | 2500 | ✅ |
-| 粗糙地面坐下 / 起立 | `SitStand-Rough` | 2500 | ✅ |
-| 平地拾取 | `GroundPick-Flat` | 2000 | ✅ |
-| 粗糙地面拾取 | `GroundPick-Rough` | 2000 | ✅ |
-| 平地踢球 | `BallKick-Flat` | 1500 | ✅ |
-| 轮式速度 | `Roller-Velocity` | 5000 | ✅ |
-| 轮式转向 / Swizzle | `Roller-Swizzle` | 3000 | ✅ |
-| 轮式蹲伏 | `Roller-Crouch` | 1500 | ✅ |
-| 轮式坡面 | `Roller-Slope` | 1500 | ✅ |
-| 轮式起身 | `Roller-StandUp` | 4000 | ✅ |
-| 原地旋转 | `Spin` | 3000 | ✅ |
-| 翻滚 | `Roulade` | 6000 | ✅ |
-
-其余训练 case 的 checkpoint 和日志仍可按训练脚本复现；教程仓库只保留精选的三段 GIF/MP4，避免把未通过画面验收的素材继续作为结果传播。
-
-## 如何自己播放一个 checkpoint
-
-有桌面显示会话时，可以直接打开 viewer：
+训练结束后，先找到最近一次练习里编号最大的模型：
 
 ```bash
-cd codes/practices/humanoid/microduck-rl
+CKPT=$(find logs/rsl_rl/tutorial_walk -type f -name 'model_*.pt' | sort -V | tail -n 1)
+printf '%s\n' "$CKPT"
+test -f "$CKPT" && echo "模型文件已找到"
+```
+
+**成功信号：**输出一个真实存在的 `.pt` 文件路径和“模型文件已找到”。如果为空，先查看训练是否成功保存；不要继续执行回放命令。下面的命令需在同一个终端运行，以保留 `CKPT` 变量。
+
+有图形桌面时，打开交互窗口：
+
+```bash
 uv run play Mjlab-Velocity-Flat-MicroDuck \
-  --checkpoint-file logs/rsl_rl/mode_matrix_stable/<run>/model_3000.pt \
+  --checkpoint-file "$CKPT" \
   --num-envs 1
 ```
 
-没有 `DISPLAY` 时，用同一套 mjlab 环境离屏渲染：
+远程机器没有桌面时，可以输出一段视频：
 
 ```bash
 MUJOCO_GL=egl PYOPENGL_PLATFORM=egl \
 uv run python scripts/render_mjlab_checkpoint.py \
   Mjlab-Velocity-Flat-MicroDuck \
-  --checkpoint logs/rsl_rl/mode_matrix_stable/<run>/model_3000.pt \
-  --mp4 /tmp/microduck-velocity.mp4 \
-  --gif /tmp/microduck-velocity.gif \
+  --checkpoint "$CKPT" \
+  --mp4 /tmp/my-first-walk.mp4 \
   --frames 200 --lin-vel-x 0.15
 ```
 
-训练日志、checkpoint 和 W&B offline run 不放进教程仓库；页面只保留精选的演示素材和复现脚本。这样仓库不会被几十 GB 的实验中间文件拖慢，读者也能清楚地区分“代码”“模型”和“展示结果”。
+**成功信号：**生成 `/tmp/my-first-walk.mp4`。将视频下载到自己的电脑播放，观察它是否向前移动、是否频繁倒地、动作是否抖动。离屏渲染仍需要可用的 GPU/EGL 环境；“没有桌面”不等于“不需要显卡”。
 
-## 这次迁移改了什么
+## 给小黄鸭做一本成长相册
 
-原项目是一个面向研究和真机实验的工程，直接放进教程会有两个问题：读者不知道先看什么，训练结果也容易被误读成“只要跑通命令就能稳定走路”。这次集成主要做了几件事：
+别只保存最好看的那一段。把同一次训练的早期、中期、后期模型分别回放，才能看到学习发生在哪里。
 
-1. 保留上游的 MJCF、BAM、任务注册和训练脚本，不把核心逻辑改写成玩具环境；
-2. 增加 CUDA 12.2 / Driver 535 的兼容组合，使用 Torch cu126 用户态 runtime，避免要求升级宿主机驱动；
-3. 修复滚轮起立任务的 articulated joint → servo joint 索引映射，补上 CPU 配置和奖励回归测试；
-4. 增加两阶段训练、离屏评估、回放统计和跨模式汇总图；
-5. 把教程叙事改成“先看视频，再看训练闭环，最后自己跑”，同时明确仿真候选策略与真机稳定性之间的边界。
+1. 到 `logs/rsl_rl/tutorial_walk/` 中找到本次运行目录，选择三个实际存在的 `model_*.pt`，记录各自编号。
+2. 将 `CKPT` 设置成其中一个文件的路径，用同一渲染命令生成视频；输出文件分别命名为 `early.mp4`、`middle.mp4`、`late.mp4`，避免覆盖。
+3. 保持任务、速度、seed 和镜头一致，填写下面的观察表。轮数以真实文件为准，不假定特定编号一定存在。
 
-## 继续玩：从小黄鸭迁移到二次元娃娃
+| 观察问题 | 早期 | 中期 | 后期 |
+| --- | --- | --- | --- |
+| 能否持续保持身体直立？ | 记录现象 | 记录现象 | 记录现象 |
+| 是否向目标方向移动？ | 记录现象 | 记录现象 | 记录现象 |
+| 是否有明显抖动或倒地重置？ | 记录现象 | 记录现象 | 记录现象 |
 
-如果要把项目做成一个会走、会做动作、还能和人互动的二次元娃娃，建议按下面的顺序迁移，而不是一开始就换掉全部模型：
+本页现有精选素材来自不同任务，不把它们拼成同一个任务的“成长过程”。你的三段同条件视频，才是这次练习自己的成长相册。
 
-1. **先换外观**：保留 MicroDuck 的腿部自由度和控制接口，只替换头部、外壳和材质，确认质量、碰撞和质心没有被破坏；
-2. **再换身体比例**：重新标定关节限位、质量、惯量、脚底尺寸和执行器力矩上限；
-3. **重新做动作库**：走路、起身、挥手、鞠躬、转身等动作分别定义命令与奖励，继续采用“一种技能一份策略”的方式；
-4. **最后接感知和交互**：把视觉目标、语音或高层行为树作为命令生成器，不要把摄像头像素直接塞进第一版 locomotion 策略；
-5. **sim2real 小步落地**：先低速、吊绳或保护架测试，再做地面摩擦、舵机延迟、编码器偏置和电池电压的校准。
+<details>
+<summary>为什么不能只比较总奖励？</summary>
 
-这条路线的商业价值也比较清晰：同一套仿真和训练基础设施可以服务于教育套件、展厅互动机器人、IP 角色玩具和小型服务机器人；真正需要重新训练的，通常是身体比例、执行器和动作目标，而不是从零重写整套工具链。
+奖励由多个项组合而成。修改权重之后，总分的刻度也变了，两个实验的总奖励可能不再能直接比较。保留固定命令下的位移、速度误差、倒地情况等任务指标，再配合视频解释结果。
 
-## 练习题
+</details>
 
-- 把 Velocity 的 `--lin-vel-x` 从 `0.15` 改成 `-0.1`，观察后退时的步态是否仍然稳定；
-- 在 `microduck_velocity_env_cfg.py` 中找到 `pose`、`upright`、`action_rate_l2`，解释每一项防止了哪种投机动作；
-- 给 GroundPick 增加一个“目标没有被抬起就不算完成”的终止或奖励项，再跑一次短训练；
-- 比较同一个 checkpoint 的 viewer 回放和 `render_mjlab_checkpoint.py` 回放，确认二者使用的是同一套观测和执行器链路。
+## 闯关：从会运行，到会设计
 
-## 代码和上游
+### 第 1 关：倒着走会怎样？
 
-- 教程代码：[codes/practices/humanoid/microduck-rl（仓库网页）](https://github.com/datawhalechina/dive-into-embodied-ai/tree/master/codes/practices/humanoid/microduck-rl)
-- 上游项目：[pollen-robotics/microduck_rl](https://github.com/pollen-robotics/microduck_rl)
-- 上游版本：`develop` 分支，commit `d424a0c`
-- 许可证：代码 Apache-2.0；3D 模型按上游说明使用 CC BY-SA-NC
+将离屏回放命令中的 `--lin-vel-x 0.15` 改成 `--lin-vel-x -0.1`，换一个输出文件名。先预测动作，再比较视频。
 
-最后提醒一次：页面上的 GIF 是训练后 checkpoint 的固定场景回放，适合演示和教程复现；要把策略装上真实机器人，还需要多 seed、更多地形和速度范围、硬件限位、低速保护以及 sim2real 验证。
+<details>
+<summary>提示：这里有没有重新训练？</summary>
+
+没有。你使用的是同一份 checkpoint，改变的是输入命令。它能否后退，取决于训练经历和策略的泛化能力。
+
+</details>
+
+### 第 2 关：少抖一点，还是走快一点？
+
+在 `src/mjlab_microduck/tasks/microduck_velocity_env_cfg.py` 中查找 `action_rate_l2` 以及相关 curriculum（课程调度）。看清这个奖励项和它的权重如何变化，再设计一个只改变该项的实验。
+
+<details>
+<summary>提示：为什么不能只改一个数字就宣布实验成立？</summary>
+
+课程调度可能在训练中再次修改权重。先确认实际生效的配置；新实验使用不同的 `experiment-name`，保留原版，其他条件尽量相同。改变奖励需要重新训练，不能仅通过回放旧模型检验。
+
+</details>
+
+### 第 3 关：交一份小黄鸭实验报告
+
+交付两段同条件视频、一张比较表和三句话：**改了什么？观察到什么？下一步如何验证？** 如果动作退步，解释失败也算一次有价值的实验。
+
+## 继续深入：找到代码里的每一层
+
+| 想了解什么 | 从哪里开始 |
+| --- | --- |
+| 任务如何注册 | `src/mjlab_microduck/tasks/__init__.py` |
+| 走路的观测、奖励和课程 | `src/mjlab_microduck/tasks/microduck_velocity_env_cfg.py` |
+| 奖励和观测如何计算 | `src/mjlab_microduck/tasks/mdp.py` |
+| 电机如何响应目标位置 | `src/mjlab_microduck/actuator/` |
+| 模型如何变成视频 | `scripts/render_mjlab_checkpoint.py` |
+
+<details>
+<summary>进阶：PPO 在优化什么？</summary>
+
+策略不是只追求当前一步的奖励，而是学习获得更好的长期回报。PPO 根据采样经验估计动作的优势：这个动作的结果，比当时预期的好多少？更新时，它限制策略变化过大，以减少一次更新把已有行为破坏掉的风险。
+
+在代码里可以沿着“环境配置 → rollout 采样 → rsl_rl 的 PPO 更新”继续阅读。先完成一组对照实验，再带着问题看算法细节会更容易理解。
+
+</details>
+
+需要查模型来源、完整模式表、验收字段或创意动作？查看[实验记录与创意动作](./experiment-notes.md)。这些材料供复核和拓展使用，不是完成本课的前置要求。

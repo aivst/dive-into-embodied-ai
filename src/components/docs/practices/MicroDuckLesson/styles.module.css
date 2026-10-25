@@ -1,0 +1,18 @@
+.gallery { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+.card { min-width: 0; padding: 1rem; border: 1px solid var(--ifm-color-emphasis-300); border-radius: 16px; background: var(--ifm-background-surface-color); }
+.card h3 { font-size: 1.05rem; }
+.card video { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: contain; border-radius: 8px; background: #17232c; }
+.card p, .card details { margin: .8rem 0; font-size: .9rem; }
+.card summary, .panel summary { cursor: pointer; font-weight: 600; }
+.panel { margin: 1.5rem 0; padding: clamp(1rem, 3vw, 1.5rem); border: 1px solid var(--ifm-color-emphasis-300); border-radius: 16px; background: var(--ifm-background-surface-color); }
+.eyebrow { color: var(--ifm-color-primary); font-weight: 700; }
+.steps { display: flex; flex-wrap: wrap; gap: .5rem; }
+.steps button { cursor: pointer; padding: .6rem .8rem; border: 1px solid var(--ifm-color-emphasis-400); border-radius: 8px; background: var(--ifm-background-color); color: var(--ifm-font-color-base); font: inherit; }
+.steps button[aria-pressed='true'] { border-color: var(--ifm-color-primary); outline: 2px solid var(--ifm-color-primary); font-weight: 700; }
+.explanation { min-height: 180px; padding: 1.25rem 0; }
+.slider { display: block; margin: 1rem 0; font-weight: 600; }
+.slider input { display: block; width: 100%; margin-top: .6rem; accent-color: var(--ifm-color-primary); }
+.tableWrap { overflow-x: auto; }
+.tableWrap table { width: 100%; margin-bottom: .5rem; }
+.panel button:focus-visible, .panel input:focus-visible, .panel summary:focus-visible, .card summary:focus-visible { outline: 3px solid var(--ifm-color-primary); outline-offset: 4px; }
+@media (max-width: 800px) { .gallery { grid-template-columns: 1fr; } .explanation { min-height: 0; } }

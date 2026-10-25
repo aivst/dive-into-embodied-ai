@@ -184,7 +184,7 @@ const sidebars: SidebarsConfig = {
       items: [
         { type: 'link', label: '从零到一搭建四足机器人', href: '/docs/practices/quadruped/cs123/intro' },
         { type: 'link', label: 'Petoi Quaddle 四舵机步行仿真', href: '/docs/practices/quadruped/quaddle-mujoco' },
-        { type: 'link', label: 'MicroDuck RL：走路、起身和翻滚', href: '/docs/practices/humanoid/microduck-rl' },
+        { type: 'link', label: 'MicroDuck RL：教小黄鸭学会一个动作', href: '/docs/practices/humanoid/microduck-rl' },
         { type: 'link', label: 'MuJoCo 仿真入门', href: '/docs/practices/robot-arm/mujoco-arm-pick-place' },
         { type: 'link', label: 'DDPG InvertedPendulum', href: '/docs/practices/robot-arm/ddpg-mujoco/invertedpendulum-v5' },
         { type: 'link', label: 'DDPG Reacher', href: '/docs/practices/robot-arm/ddpg-mujoco/reacher-v5' },
